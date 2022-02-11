@@ -1,5 +1,5 @@
-drop table if exists `user` cascade;
-create table `user`
+drop table if exists `user2` cascade;
+create table `user2`
 (
     id integer auto_increment,
     first_name varchar (255),
