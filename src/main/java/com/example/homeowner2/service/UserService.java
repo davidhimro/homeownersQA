@@ -39,6 +39,15 @@ public class UserService {
         return this.repo.findByFirstName(firstName).get();
     }
 
+    //Update Service Method
+    public User2 update(Long id, User2 user){
+        User2 existing= this.repo.findById(id).orElseThrow();
+        existing.setFirstName(user.getFirstName());
+        existing.setLastName(user.getLastName());
+        existing.setNumberProperties(user.getNumberProperties());
+        existing.setNetWorth(user.getNetWorth());
+        return this.repo.saveAndFlush(existing);
+    }
 
     //Delete Service Method//
     public Boolean delete(Long id){
