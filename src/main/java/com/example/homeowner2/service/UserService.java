@@ -34,5 +34,16 @@ public class UserService {
         //or else throws custom exception to say entity not found instead of
         // failing with a null value.
     }
+    //Custom Query - Find by username
+    public List<User2> getByFirstName(String firstName){
+        return this.repo.findByFirstName(firstName).get();
+    }
+
+
+    //Delete Service Method//
+    public Boolean delete(Long id){
+        this.repo.deleteById(id);
+        return !this.repo.existsById(id);
+    }
 
 }
