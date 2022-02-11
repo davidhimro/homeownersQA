@@ -5,7 +5,7 @@ Outline - Prepare a homeowner database to store a persons first, last names alon
 **Tools Used **
 Database - Persistent MySQL, Temporary for Testing H2
 Database tool to check - MySQL workbench
-Language - Java
+Language - Java version 17
 Framework - Spring Boot
 HTTP Connectio Protocol - Rest
 Build Tool - Maven
