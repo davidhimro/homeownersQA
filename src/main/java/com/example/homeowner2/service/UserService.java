@@ -1,4 +1,5 @@
 package com.example.homeowner2.service;
+import com.example.homeowner2.exceptions.UserNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.example.homeowner2.domain.User2;
@@ -30,7 +31,7 @@ public class UserService {
 
     //Read One By Id -
     public User2 getById(Long id){
-        return this.repo.findById(id).orElseThrow(/*UserNotFoundException::new*/);
+        return this.repo.findById(id).orElseThrow(UserNotFoundException::new);
         //or else throws custom exception to say entity not found instead of
         // failing with a null value.
     }
