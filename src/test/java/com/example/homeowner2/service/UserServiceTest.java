@@ -63,5 +63,29 @@ public class UserServiceTest {
     //User userDummyData1 = new User("John", "Smith", "johnsmith@hotmail.com");
     //    User userDummyOutput1= new User(1l, "John", "Smith", "johnsmith@hotmail.com");
 
+    @Nullable
+    @Test
+    public void testUpdate(){
+        //given id, object
+        Long id = 1L;
+        User2 userDummyData2 = new User2("John", "Smith", 1L, 300000L);
+        // New Object
+        // Optional Object of User
+        Optional<User2> optionalUser =Optional.of(new User2(id,null, null, 0L, 0L));
+        User2 updated = new User2(id, userDummyData2.getFirstName(), userDummyData2.getLastName(), userDummyData2.getNumberProperties(), userDummyData2.getNetWorth());
+        //Mockito call to find the optional of dummy data object fetched by id
+        Mockito.when(this.repo.findById(id)).thenReturn(optionalUser);
+        //Mockito to update (save and flush)
+        Mockito.when(this.repo.saveAndFlush(updated)).thenReturn(updated);
+        Assert.assertEquals(updated, this.service.update(id, userDummyData2));
+    }
+    // Delete ID
+    @Test
 
+    public void testDelete() {
+        Long id = 1L;
+        Mockito.when(this.repo.existsById(id)).thenReturn(true);
+        //assertEquals(false, this.service.delete(id));
+        assertFalse(this.service.delete(id));
+    }
 }
