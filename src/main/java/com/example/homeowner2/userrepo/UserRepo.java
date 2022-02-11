@@ -12,7 +12,7 @@ import java.util.Optional;
 
 public interface UserRepo extends JpaRepository <User2, Long> {
 
-    @Query(value="SELECT * FROM user WHERE first_name = ?1", nativeQuery = true)
+    @Query(value="SELECT * FROM user2 WHERE first_name = ?1", nativeQuery = true)
     Optional<List<User2>> findByFirstName(String firstName);
 
 }

@@ -36,9 +36,10 @@ public class UserControllerIntegration {
 
     @Test
     public void getAllUsersTest() throws Exception {
-        String listOfUsers=this.mapper.writeValueAsString(List.of(
-                new User2(1l,"John", "Smith", "johnsmith@hotmail.com", 2L, 300000L)
-        ));
+
+        List<User2> listOfUsers = new ArrayList<>();
+        listOfUsers.add(new User2(1L,"John", "Smith", "johnsmith@hotmail.com", 2L, 300000L));
+        String listOfUsersJSON =this.mapper.writeValueAsString(listOfUsers);
 
         //RequestBuilder request = (RequestBuilder) get("/user/getAll");
 
@@ -46,7 +47,7 @@ public class UserControllerIntegration {
         //ResultMatcher content = (ResultMatcher) content().json(listOfUsers);
         mvc.perform(get("/user/getAll").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(content().json(listOfUsers));
+                .andExpect(content().json(listOfUsersJSON));
     }
     @Test
     public void getByOneTest() throws Exception {
