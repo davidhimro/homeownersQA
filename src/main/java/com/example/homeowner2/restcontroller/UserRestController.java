@@ -54,5 +54,16 @@ public class UserRestController {
     public ResponseEntity<User2> getById(@PathVariable Long id){
         return new ResponseEntity<User2>(this.service.getById(id),HttpStatus.OK);
     }
+    // Custom Query - Get by username
+    @GetMapping("/get")
+    public ResponseEntity<List<User2>> getByFirstName(@PathParam("firstName") String firstName){
+        return new ResponseEntity<>(this.service.getByFirstName(firstName), HttpStatus.OK);
+    }
+
+    //Update endpoint
+    @PutMapping("/update/{id}")
+    public ResponseEntity<User2> update(@PathVariable Long id, @PathVariable User2 user){
+        return new ResponseEntity<User2>(this.service.update(id, user),HttpStatus.ACCEPTED );
+    }
 
 }
