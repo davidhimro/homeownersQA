@@ -65,5 +65,11 @@ public class UserRestController {
     public ResponseEntity<User2> update(@PathVariable Long id, @PathVariable User2 user){
         return new ResponseEntity<User2>(this.service.update(id, user),HttpStatus.ACCEPTED );
     }
-
+    //Delete endpoint
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<User2> delete(@PathVariable Long id) {
+        return this.service.delete(id) ?
+                new ResponseEntity<User2>(HttpStatus.NO_CONTENT):
+                new ResponseEntity<User2>(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 }
