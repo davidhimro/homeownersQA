@@ -32,4 +32,27 @@ public class User2 {
     @Column(nullable=false)
     private Long netWorth;
 
+    public User2(String firstName, String lastName, Long numberProperties, Long netWorth) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.numberProperties = numberProperties;
+        this.netWorth = netWorth;
+    }
+
+    public User2(long id, String firstName, String lastName, Long numberProperties, Long netWorth) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.numberProperties = numberProperties;
+        this.netWorth = netWorth;
+    }
+
+    public User2(String firstName, String lastName, String userName, Long numberProperties, Long netWorth) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.userName = userName;
+        this.numberProperties = numberProperties;
+        this.netWorth = netWorth;
+    }
+
 }
