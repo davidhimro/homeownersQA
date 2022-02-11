@@ -48,4 +48,14 @@ public class UserControllerIntegration {
                 .andExpect(status().isOk())
                 .andExpect(content().json(listOfUsers));
     }
+    @Test
+    public void getByOneTest() throws Exception {
+        String user=this.mapper.writeValueAsString(
+                new User2(1l,"John", "Smith", "johnsmith@hotmail.com", 2L, 300000L)
+        );
+        mvc.perform(get("/user/getOne/1").contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().json(user));
+    }
+
 }
