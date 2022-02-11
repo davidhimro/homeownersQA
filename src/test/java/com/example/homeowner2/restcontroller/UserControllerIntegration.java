@@ -58,4 +58,20 @@ public class UserControllerIntegration {
                 .andExpect(content().json(user));
     }
 
+    @Test
+    public void getByFirstNameTest() throws Exception {
+        List<User2> output = new ArrayList<>();
+        output.add(new User2(1L, "John", "Smith", "johnsmith@hotmail.com", 2L, 300000L));
+
+        String outputAsJSON = this.mapper.writeValueAsString(output);
+        mvc.perform(get("/user/get?firstName=John").contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().json(outputAsJSON));
+    }
+
+    @Test
+    public void deleteTest() throws Exception {
+        mvc.perform(delete("/user/delete/1").contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNoContent());
+    }
 }
